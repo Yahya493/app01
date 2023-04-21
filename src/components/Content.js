@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import ApiHelper from './ApiHelper'
 import ContentCol from './ContentCol'
+import Product from './Product'
 
 export default class Content extends Component {
     state = {
@@ -53,6 +54,9 @@ export default class Content extends Component {
         return (
             <div id='Content' >
                 {this.arrangeCol(this.state.nbCol)}
+                {/* {this.applyFilter(this.state.data).map(val => {
+                    return <Product key={val.id} data={val} />
+                })} */}
             </div>
         )
     }

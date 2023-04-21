@@ -25,16 +25,16 @@ export default class Product extends Component {
 
     render() {
         return (
-            <div className="card ">
-                <div className="card-image waves-effect waves-block waves-light" style={{ padding: 10 }}>
-                    <img className="activator" src={this.state.data.image} />
+            <div className="card" style={{ height: "450px", padding: "10px", }}>
+                <div className="valign-wrapper " style={{ height: "50%", justifyContent: "center" }}>
+                    <img className=" activator " src={this.state.data.image} style={{ maxHeight: "100%", maxWidth: "100%" }} />
                 </div>
-                <div className="card-content">
-                    <span className="card-title activator grey-text text-darken-4 "><i className="material-icons right">more_vert</i>{this.state.data.title}</span>
-                    <p><Link to='#'>This is a link</Link></p>
+                <div className="" style={{ height: "40%", }}>
+                    <span className="card-title activator grey-text text-darken-4 " style={{ fontSize: "16px", fontWeight: "bold" }}>{this.state.data.title}</span>
+                    <p><Link to='#' >This is a link</Link></p>
                 </div>
-                <div className="card-reveal">
-                    <span className="card-title grey-text text-darken-4"><i className="material-icons right">close</i>{this.state.data.title}</span>
+                <div className="card-reveal" style={{padding: "10px", }}>
+                    <span className="card-title grey-text text-darken-4" style={{ fontSize: "16px", fontWeight: "bold" }}><i className="material-icons right " >close</i><br />{this.state.data.title}</span>
                     <p>{this.state.data.description}</p>
                 </div>
             </div>

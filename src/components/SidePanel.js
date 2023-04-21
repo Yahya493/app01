@@ -50,7 +50,7 @@ export default class SidePanel extends Component {
 
   render() {
     return (
-      <div id='SidePanel' style={{position:"fixed", backgroundColor:"#ffe6ee", height:"100%",}}>
+      <div id='SidePanel' style={{/*position:"fixed",*/ backgroundColor:"#ffe6ee", height:"100%",}}>
         <h6>Category</h6>
         <ul style={{ paddingLeft: 20 }}>
           {this.state.categories.map(val => {
