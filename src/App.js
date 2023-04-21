@@ -4,7 +4,6 @@ import Content from "./components/Content";
 import NavBar from "./components/NavBar";
 import SidePanel from "./components/SidePanel";
 
-
 class App extends Component {
   apiHelper = new ApiHelper()
 
