@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import ApiHelper from './ApiHelper'
 import ContentCol from './ContentCol'
-import Product from './Product'
+import Product from './ProductCard'
 
 export default class Content extends Component {
     state = {

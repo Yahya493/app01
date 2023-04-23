@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Product from './Product'
+import Product from './ProductCard'
 
 export default class ContentCol extends Component {
     render() {
