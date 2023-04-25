@@ -2,6 +2,13 @@
 
 export default class ApiHelper {
     api = 'https://fakestoreapi.com'
+
+    constructor() {
+        if (!ApiHelper.instance) {
+          ApiHelper.instance = this;
+        }
+        return ApiHelper.instance;
+      }
     
     getData = async () => {
         return fetch(this.api + '/products')
@@ -15,4 +22,12 @@ export default class ApiHelper {
         //       .catch(error => reject(error));
         //   });
     }
+
+    getProductById = async (id) => {
+        return fetch(this.api + '/products/' + id)
+            .then(resp => resp.json())
+            .then(json => {return json})
+    }
+
+    
 }

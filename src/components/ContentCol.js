@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Product from './ProductCard'
+import ProductCard from './ProductCard'
 
 export default class ContentCol extends Component {
     render() {
@@ -8,7 +8,7 @@ export default class ContentCol extends Component {
             <div className={'col s' + colSize}>
                 {this.props.data.map(val => {
                     return (
-                        <Product key={val.id} data={val} />
+                        <ProductCard key={val.id} data={val} />
                     )
                 })}
             </div>

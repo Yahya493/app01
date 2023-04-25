@@ -1,0 +1,28 @@
+label {
+    display: inline-block;
+    /* cursor: pointer; */
+    color: #ccc;
+    
+  }
+  
+  /* label:hover,
+  label:hover ~ label,
+  input:checked ~ label {
+    color: #f2b01e;
+  } */
+  
+  .checked {
+    color: #f2b01e;
+  }
+
+  span label {
+    font-size: 30px;
+  }
+
+  span {
+    font-size: 20px;
+  }
+
+  p {
+    font-size: 18px;
+  }
