@@ -1,15 +1,8 @@
 label {
     display: inline-block;
-    /* cursor: pointer; */
     color: #ccc;
     
   }
-  
-  /* label:hover,
-  label:hover ~ label,
-  input:checked ~ label {
-    color: #f2b01e;
-  } */
   
   .checked {
     color: #f2b01e;
@@ -21,8 +14,4 @@ label {
 
   span {
     font-size: 20px;
-  }
-
-  p {
-    font-size: 18px;
   }

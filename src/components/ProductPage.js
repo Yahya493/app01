@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { json, useParams } from 'react-router-dom'
 import ApiHelper from './ApiHelper'
-import './productPage.css'
+import Rating from './Rating'
 
 export default function ProductPage(props) {
   const [i, setI] = useState(0)
@@ -17,27 +17,15 @@ export default function ProductPage(props) {
   }
   return (
     <div className='container row'>
-      <h3>ProductPage</h3>
+      <h3></h3>
       <div className='col s12 m4'>
         <img src={product.image} width={'100%'} />
       </div>
       <div className='col s12 m8'>
         <h4>{product.title}</h4>
-        <p>{product.description}</p>
+        <p style={{fontSize: '18px'}}>{product.description}</p>
         <h5>${product.price}</h5>
-        {/* <h5>Rate: {product.rating.rate} {product.rating.count}</h5> */}
-        <div>
-          {[...Array(5)].map((_, i) => {
-            const ratingValue = i + 1;
-            return (
-              <span key={i} >
-                <input type="radio" name="rating" value={ratingValue} />
-                <label className={ratingValue <= product.rating.rate ? 'checked' : ''}>★</label>
-              </span>
-            );
-          })}
-          <span> {product.rating.count}</span>
-        </div>
+        <Rating rating={product.rating}/>
       </div>
     </div>
   )

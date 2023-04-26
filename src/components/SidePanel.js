@@ -18,22 +18,22 @@ export default class SidePanel extends Component {
       this.setState({
         categories: catList
           .map(cat => { return { id: i++, name: cat, checked: true } })
-      },this.applyFilter)
+      }, this.applyFilter)
     })
   }
 
   handleCheckbox = (e) => {
-      let target = this.state.categories[e.target.value]
-      target.checked = !target.checked
+    let target = this.state.categories[e.target.value]
+    target.checked = !target.checked
 
-      if(e.target.value == 0) {
-        this.state.categories.forEach(element => {
-          element.checked = target.checked
-        });
-      }
-      else{
-        this.state.categories[0].checked = false
-      }
+    if (e.target.value == 0) {
+      this.state.categories.forEach(element => {
+        element.checked = target.checked
+      });
+    }
+    else {
+      this.state.categories[0].checked = false
+    }
 
     this.setState({ categories: this.state.categories },
       this.applyFilter
@@ -50,17 +50,18 @@ export default class SidePanel extends Component {
 
   render() {
     return (
-      <div id='SidePanel' style={{/*position:"fixed",*/ backgroundColor:"#ffe6ee", height:"100%",}}>
+      <div id='SidePanel' style={{ height: "100%", }}>
         <h6>Category</h6>
         <ul style={{ paddingLeft: 20 }}>
           {this.state.categories.map(val => {
             return <li key={Math.random()}>
               <label className='checkbox'>
                 <input type='checkbox' value={val.id} checked={val.checked} onChange={this.handleCheckbox} />
-                <span>
+                <span style={{ color: 'black' }}>
                   {val.name}
                 </span>
-              </label></li>
+              </label>
+            </li>
           }
           )}
         </ul>
