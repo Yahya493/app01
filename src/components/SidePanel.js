@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import ApiHelper from './ApiHelper'
+import Search from './Search'
 
 export default class SidePanel extends Component {
   state = {
@@ -50,7 +51,12 @@ export default class SidePanel extends Component {
 
   render() {
     return (
-      <div id='SidePanel' style={{ position:"fixed"}}>
+      <div id='SidePanel' style={{ position: "fixed" }}>
+
+        <div className='right' style={{ padding: '10px', width:'100%'}}>
+          <Search />
+        </div>
+
         <h6>Category</h6>
         <ul style={{ paddingLeft: 20 }}>
           {this.state.categories.map(val => {
