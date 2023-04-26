@@ -6,7 +6,7 @@ export default class NavBar extends Component {
     return (
         <nav>
             <div className="nav-wrapper ">
-            <Link to="#" className="brand-logo left" style={{paddingLeft:'10px'}}>Logo</Link>
+            <Link to="#" className="brand-logo left" style={{paddingLeft:'10px'}}>FakeStore</Link>
             <ul id="nav-mobile" className="right">
                 <li><Link to='/'>Home</Link></li>
             </ul>
