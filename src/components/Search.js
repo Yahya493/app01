@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-export default function Search() {
+export default function Search(props) {
     const [query, setQuery] = useState('');
 
     const handleInputChange = (event) => {
@@ -9,7 +9,7 @@ export default function Search() {
 
     const handleSearch = (event) => {
         event.preventDefault();
-        // handle search query
+        props.handleSearch(query)
     }
 
     return (
@@ -21,7 +21,7 @@ export default function Search() {
                 onChange={handleInputChange}
                 className='col s8'
             />
-            <button className='btn-small col s4' type="submit"><i className='material-icons'>search</i></button>
+            <button className='btn-small col s4' type="submit">Search</button>
         </form>
     )
 }

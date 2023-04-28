@@ -53,10 +53,6 @@ export default class SidePanel extends Component {
     return (
       <div id='SidePanel' style={{ position: "fixed" }}>
 
-        <div className='right' style={{ padding: '10px', width:'100%'}}>
-          <Search />
-        </div>
-
         <h6>Category</h6>
         <ul style={{ paddingLeft: 20 }}>
           {this.state.categories.map(val => {

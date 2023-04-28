@@ -10,16 +10,24 @@ import ProductPage from "./components/ProductPage";
 class App extends Component {
   apiHelper = new ApiHelper()
 
-  
+  state = {
+    searchQuery: ''
+  }
+
+  handleSearch = (query) => {
+    this.setState({
+      searchQuery: query
+    })
+  }
 
   render() {
     return (
       <div className="App ">
         <div className="navbar-fixed">
-          <NavBar />
+          <NavBar handleSearch={this.handleSearch}/>
         </div>
         <Routes >
-            <Route path="/" element={<Home apiHelper={this.apiHelper}/> } />
+            <Route path="/" element={<Home apiHelper={this.apiHelper} searchQuery={this.state.searchQuery}/> } />
             <Route path="product/:id" element={<ProductPage />} />
             <Route path="*" element={<NotFound />} />
         </Routes>

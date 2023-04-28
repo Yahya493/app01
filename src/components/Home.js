@@ -24,7 +24,7 @@ export default class Home extends Component {
                     <SidePanel api={this.props.apiHelper} categoriesFilter={this.handleFilter} />
                 </div>
                 <div className="col s12 m9 l10">
-                    <Content api={this.props.apiHelper} filter={this.state.filter} />
+                    <Content api={this.props.apiHelper} filter={this.state.filter} searchQuery={this.props.searchQuery}/>
                 </div>
 
             </div>

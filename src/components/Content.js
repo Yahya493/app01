@@ -18,6 +18,11 @@ export default class Content extends Component {
             return this.props.filter.categories.includes(value.category)})
     }
 
+    applySearch() {
+        return this.state.data.filter(value => {
+            return value.title.toLowerCase().includes(this.props.searchQuery.toLowerCase())})
+    }
+
     componentDidMount() {
         this.props.api.getData().then(data=>this.setState({
             data: data,
@@ -40,7 +45,8 @@ export default class Content extends Component {
     }
 
     arrangeCol = (nbCol) => {
-        let filteredData = this.applyFilter(this.state.data)
+        // let filteredData = this.applyFilter(this.state.data)
+        let filteredData = this.applyFilter(this.applySearch())
 
         let cols = []
         for (let i = 0; i < nbCol; i++) {
