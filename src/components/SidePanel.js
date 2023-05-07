@@ -1,26 +1,49 @@
 import React, { Component } from 'react'
-import ApiHelper from './ApiHelper'
-import Search from './Search'
+import { connect } from 'react-redux'
 
-export default class SidePanel extends Component {
+const mapStateToProps = state => {
+  return {
+    categories: state.filters.categories,
+
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return ({
+    setCategories: (categories) => {
+      dispatch({ type: 'filter', filters: { categories: categories } })
+    },
+  })
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(class SidePanel extends Component {
   state = {
     categories: []
   }
 
-  componentDidMount(props) {
+  componentDidMount() {
 
-    this.props.api.getData().then(data => {
-      let catList = data.map(val => val.category)
-      catList = catList.filter((value, index, self) => {
-        return self.indexOf(value) === index;
-      })
-      catList = ["All", ...catList.sort()]
-      let i = 0
-      this.setState({
-        categories: catList
-          .map(cat => { return { id: i++, name: cat, checked: true } })
-      }, this.applyFilter)
-    })
+    // this.props.api.getData().then(data => {
+    //   let catList = data.map(val => val.category)
+    //   catList = catList.filter((value, index, self) => {
+    //     return self.indexOf(value) === index;
+    //   })
+    //   catList = ["All", ...catList.sort()]
+    //   let i = 0
+
+
+    //   this.setState({
+    //     categories: catList
+    //       .map(cat => { return { id: i++, name: cat, checked: true } })
+    //   }, this.applyFilter)
+    // })
+
+    let i = 0
+    this.setState({
+      categories: this.props.categories
+        .map(cat => { return { id: i++, name: cat, checked: true } })
+    }, this.applyFilter)
   }
 
   handleCheckbox = (e) => {
@@ -36,17 +59,22 @@ export default class SidePanel extends Component {
       this.state.categories[0].checked = false
     }
 
-    this.setState({ categories: this.state.categories },
+    this.setState({categories: this.state.categories},
       this.applyFilter
     )
   }
 
   applyFilter = () => {
-    this.props.categoriesFilter({
-      categories: this.state.categories.map(val => {
-        if (val.checked) return val.name
-      })
-    })
+    ///
+    this.props.setCategories(this.state.categories.map(val => {
+      if (val.checked) return val.name
+    }))
+    ///
+    // this.props.categoriesFilter({
+    //   categories: this.state.categories.map(val => {
+    //     if (val.checked) return val.name
+    //   })
+    // })
   }
 
   render() {
@@ -70,4 +98,4 @@ export default class SidePanel extends Component {
       </div>
     )
   }
-}
+})

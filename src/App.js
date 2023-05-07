@@ -6,6 +6,7 @@ import Home from "./components/Home";
 import NavBar from "./components/NavBar";
 import NotFound from "./components/NotFound";
 import ProductPage from "./components/ProductPage";
+import { connect } from "react-redux";
 
 class App extends Component {
   apiHelper = new ApiHelper()
@@ -19,6 +20,15 @@ class App extends Component {
       searchQuery: query
     })
   }
+
+
+  componentDidMount() {
+    this.props.init()
+  }
+
+  // componentDidUpdate(preProps) {
+  //   if(preProps !== this.props) this.forceUpdate()
+  // }
 
   render() {
     return (
@@ -36,5 +46,11 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapDispatchToProps = (dispatch) => {
+  return ({
+    init: () => { dispatch({ type: 'init' }) }
+  })
+}
+
+export default connect(null,mapDispatchToProps)(App);
 

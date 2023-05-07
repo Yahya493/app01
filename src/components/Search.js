@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 export default function Search(props) {
-    const [query, setQuery] = useState('');
+    const [searchQuery, setQuery] = useState('');
 
     const handleInputChange = (event) => {
         setQuery(event.target.value);
@@ -9,7 +9,7 @@ export default function Search(props) {
 
     const handleSearch = (event) => {
         event.preventDefault();
-        props.handleSearch(query)
+        props.handleSearch(searchQuery)
     }
 
     return (
@@ -17,7 +17,7 @@ export default function Search(props) {
             <input
                 type="text"
                 placeholder="Search..."
-                value={query}
+                value={searchQuery}
                 onChange={handleInputChange}
                 className='col s8'
             />

@@ -1,12 +1,17 @@
 import React, { Component } from 'react'
-import ApiHelper from './ApiHelper'
 import ContentCol from './ContentCol'
-import Product from './ProductCard'
+import { connect } from 'react-redux'
 
-export default class Content extends Component {
+const mapStateToProps = state => {
+    return {
+        filters: state.filters,
+        data: state.data
+    }
+}
+
+export default connect(mapStateToProps)(class Content extends Component {
     state = {
-        data: [],
-        // cols: [],
+        // data: [],
         nbCol: 1,
         filter: {
             categories: []
@@ -15,19 +20,23 @@ export default class Content extends Component {
 
     applyFilter(data) {
         return data.filter(value => {
-            return this.props.filter.categories.includes(value.category)})
+            return this.props.filters.categories.includes(value.category)
+        })
     }
 
     applySearch() {
-        return this.state.data.filter(value => {
-            return value.title.toLowerCase().includes(this.props.searchQuery.toLowerCase())})
+        return this.props.data.filter(value => {
+            return value.title.toLowerCase().includes(this.props.searchQuery.toLowerCase())
+        })
     }
 
     componentDidMount() {
-        this.props.api.getData().then(data=>this.setState({
-            data: data,
+        // this.props.api.getData().then(data => this.setState({
+        //     data: data,
+        // }, handleResize))
+        this.setState({
             filter: this.props.filter
-        },handleResize))
+        })
 
         const handleResize = () => {
 
@@ -40,12 +49,19 @@ export default class Content extends Component {
                 nbCol: colNb,
             })
         }
-        
+
+        handleResize()
         window.addEventListener('resize', handleResize)
     }
 
+    // componentDidUpdate(preProps) {
+    //     if(preProps !== this.props)
+    //         this.forceUpdate()
+    // }
+
     arrangeCol = (nbCol) => {
         let filteredData = this.applyFilter(this.applySearch())
+        // console.log(this.props.filters.categories)
 
         let cols = []
         for (let i = 0; i < nbCol; i++) {
@@ -53,13 +69,14 @@ export default class Content extends Component {
         }
         return cols
     }
-
+     i = 0
     render() {
-        
+        console.log(this.i++)
         return (
             <div id='Content' >
+                {this.props.filters.categories}
                 {this.arrangeCol(this.state.nbCol)}
             </div>
         )
     }
-}
+})
