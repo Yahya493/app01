@@ -45,7 +45,6 @@ export default class Content extends Component {
     }
 
     arrangeCol = (nbCol) => {
-        // let filteredData = this.applyFilter(this.state.data)
         let filteredData = this.applyFilter(this.applySearch())
 
         let cols = []
