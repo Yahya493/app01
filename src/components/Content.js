@@ -11,11 +11,7 @@ const mapStateToProps = state => {
 
 export default connect(mapStateToProps)(class Content extends Component {
     state = {
-        // data: [],
         nbCol: 1,
-        filter: {
-            categories: []
-        }
     }
 
     applyFilter(data) {
@@ -31,12 +27,6 @@ export default connect(mapStateToProps)(class Content extends Component {
     }
 
     componentDidMount() {
-        // this.props.api.getData().then(data => this.setState({
-        //     data: data,
-        // }, handleResize))
-        this.setState({
-            filter: this.props.filter
-        })
 
         const handleResize = () => {
 
@@ -54,14 +44,8 @@ export default connect(mapStateToProps)(class Content extends Component {
         window.addEventListener('resize', handleResize)
     }
 
-    // componentDidUpdate(preProps) {
-    //     if(preProps !== this.props)
-    //         this.forceUpdate()
-    // }
-
     arrangeCol = (nbCol) => {
         let filteredData = this.applyFilter(this.applySearch())
-        // console.log(this.props.filters.categories)
 
         let cols = []
         for (let i = 0; i < nbCol; i++) {
@@ -69,12 +53,10 @@ export default connect(mapStateToProps)(class Content extends Component {
         }
         return cols
     }
-     i = 0
+    
     render() {
-        console.log(this.i++)
         return (
             <div id='Content' >
-                {this.props.filters.categories}
                 {this.arrangeCol(this.state.nbCol)}
             </div>
         )
