@@ -3,6 +3,7 @@ import ApiHelper from "../components/ApiHelper";
 const initstate = {
     data: [],
     filters: {
+        categoriesName: [],
         categories: []
     },
     searchQuery: ''
@@ -12,25 +13,22 @@ const rootreducer = (state = initstate, action) => {
 
     switch (action.type) {
         case 'init': {
-            const api = new ApiHelper()
-            api.getData().then(data => {
-                state.data = data
-                let catList = data.map(val => val.category)
-                catList = catList.filter((value, index, self) => {
-                    return self.indexOf(value) === index;
-                })
-                catList = ["All", ...catList.sort()]
-                state.filters.categories = catList
-            })
+            state = {...state, 
+                data:action.data, 
+                filters:{
+                    ...state.filters, 
+                    categoriesName: action.categories 
+                    ,categories: action.categories
+                }
+                                                        }
             break
         }
-        case 'filter': {
-            state.filters = action.filters
-            // console.log("rootReducer:" +state.filters.categories)
+        case 'setCategories': {
+            state = {...state, filters: {...state.filters, categories: action.categories}}
             break
         }
         case 'search': {
-            state.searchQuery = action.searchQuery
+            state = {...state, searchQuery: action.searchQuery}
             break
         }
     }

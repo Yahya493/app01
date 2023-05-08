@@ -9,7 +9,6 @@ import ProductPage from "./components/ProductPage";
 import { connect } from "react-redux";
 
 class App extends Component {
-  apiHelper = new ApiHelper()
 
   state = {
     searchQuery: ''
@@ -21,25 +20,28 @@ class App extends Component {
     })
   }
 
-
   componentDidMount() {
-    this.props.init()
+    const api = new ApiHelper()
+    api.getData().then(data => {
+      let catList = data.map(val => val.category)
+      catList = catList.filter((value, index, self) => {
+        return self.indexOf(value) === index;
+      })
+      catList = ["All", ...catList.sort()]
+      this.props.init(data, catList)
+    })
   }
-
-  // componentDidUpdate(preProps) {
-  //   if(preProps !== this.props) this.forceUpdate()
-  // }
 
   render() {
     return (
       <div className="App ">
         <div className="navbar-fixed">
-          <NavBar handleSearch={this.handleSearch}/>
+          <NavBar handleSearch={this.handleSearch} />
         </div>
         <Routes >
-            <Route path="/" element={<Home apiHelper={this.apiHelper} searchQuery={this.state.searchQuery}/> } />
-            <Route path="product/:id" element={<ProductPage />} />
-            <Route path="*" element={<NotFound />} />
+          <Route path="/" element={<Home searchQuery={this.state.searchQuery} />} />
+          <Route path="product/:id" element={<ProductPage />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
     )
@@ -48,9 +50,9 @@ class App extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return ({
-    init: () => { dispatch({ type: 'init' }) }
+    init: (data, categories) => { dispatch({ type: 'init', data:data, categories:categories}) }
   })
 }
 
-export default connect(null,mapDispatchToProps)(App);
+export default connect(null, mapDispatchToProps)(App);
 

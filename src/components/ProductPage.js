@@ -1,20 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { json, useParams } from 'react-router-dom'
-import ApiHelper from './ApiHelper'
 import Rating from './Rating'
+import { useSelector} from 'react-redux'
 
 export default function ProductPage(props) {
 
   let { id } = useParams()
-  const api = new ApiHelper()
-  const [product, setProduct] = useState({ rating: { rate: '', count: '' } })
-
-  useEffect(() => {
-    api.getProductById(id)
-      .then(data => {
-        setProduct(data)
-      })
-  }, [])
+  const product = useSelector((state) => state.data[id])
 
   return (
     <div className='container row'>
