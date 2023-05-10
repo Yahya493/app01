@@ -10,15 +10,15 @@ import { connect } from "react-redux";
 
 class App extends Component {
 
-  state = {
-    searchQuery: ''
-  }
+  // state = {
+  //   searchQuery: ''
+  // }
 
-  handleSearch = (query) => {
-    this.setState({
-      searchQuery: query
-    })
-  }
+  // handleSearch = (query) => {
+  //   this.setState({
+  //     searchQuery: query
+  //   })
+  // }
 
   componentDidMount() {
     const api = new ApiHelper()
@@ -39,7 +39,7 @@ class App extends Component {
           <NavBar handleSearch={this.handleSearch} />
         </div>
         <Routes >
-          <Route path="/" element={<Home searchQuery={this.state.searchQuery} />} />
+          <Route path="/" element={<Home /*searchQuery={this.state.searchQuery}*/ />} />
           <Route path="product/:id" element={<ProductPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

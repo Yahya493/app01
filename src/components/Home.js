@@ -11,7 +11,7 @@ export default class Home extends Component {
                     <SidePanel />
                 </div>
                 <div className="col s12 m9 l10">
-                    <Content searchQuery={this.props.searchQuery}/>
+                    <Content /*searchQuery={this.props.searchQuery}*//>
                 </div>
 
             </div>

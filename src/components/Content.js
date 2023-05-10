@@ -5,7 +5,8 @@ import { connect } from 'react-redux'
 const mapStateToProps = state => {
     return {
         filters: state.filters,
-        data: state.data
+        data: state.data,
+        searchQuery: state.searchQuery
     }
 }
 

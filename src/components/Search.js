@@ -1,15 +1,23 @@
-import React, { useState } from 'react'
+import React, { useCallback, useState } from 'react'
+import { useDispatch } from 'react-redux';
 
-export default function Search(props) {
+export default function Search({ handleSearch }) {
     const [searchQuery, setQuery] = useState('');
 
     const handleInputChange = (event) => {
         setQuery(event.target.value);
     }
 
-    const handleSearch = (event) => {
-        event.preventDefault();
-        props.handleSearch(searchQuery)
+    // const handleSearch = (event) => {
+    //     event.preventDefault();
+    //     props.handleSearch(searchQuery)
+
+    // }
+    const dispatch = useDispatch()
+
+    handleSearch = (event) => {
+        event.preventDefault()
+        dispatch({type: 'search', searchQuery: searchQuery})
     }
 
     return (

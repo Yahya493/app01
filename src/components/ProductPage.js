@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import { json, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import Rating from './Rating'
 import { useSelector} from 'react-redux'
 
 export default function ProductPage(props) {
 
   let { id } = useParams()
-  const product = useSelector((state) => state.data[id])
-
+  const product = useSelector((state) => state.data.find(value => value.id == id))
+  
   return (
     <div className='container row'>
       <h3></h3>

@@ -4,9 +4,9 @@ import Search from './Search'
 
 export default class NavBar extends Component {
 
-  handleSearch = (query) => {
-    this.props.handleSearch(query)
-  }
+  // handleSearch = (query) => {
+  //   this.props.handleSearch(query)
+  // }
 
   render() {
     return (
@@ -17,7 +17,7 @@ export default class NavBar extends Component {
             <li><Link to='/'>Home</Link></li>
             <li>
               <div className='right' style={{padding:'10px'}}> 
-                <Search handleSearch={this.handleSearch}/>
+                <Search /*handleSearch={this.handleSearch}*//>
               </div>
             </li>
           </ul>
