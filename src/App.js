@@ -1,7 +1,6 @@
 import { Component } from "react";
 import { Route, Routes } from "react-router-dom";
 import ApiHelper from "./components/ApiHelper";
-import Content from "./components/Content";
 import Home from "./components/Home";
 import NavBar from "./components/NavBar";
 import NotFound from "./components/NotFound";
@@ -9,16 +8,6 @@ import ProductPage from "./components/ProductPage";
 import { connect } from "react-redux";
 
 class App extends Component {
-
-  // state = {
-  //   searchQuery: ''
-  // }
-
-  // handleSearch = (query) => {
-  //   this.setState({
-  //     searchQuery: query
-  //   })
-  // }
 
   componentDidMount() {
     const api = new ApiHelper()
@@ -39,7 +28,7 @@ class App extends Component {
           <NavBar handleSearch={this.handleSearch} />
         </div>
         <Routes >
-          <Route path="/" element={<Home /*searchQuery={this.state.searchQuery}*/ />} />
+          <Route path="/" element={<Home />} />
           <Route path="product/:id" element={<ProductPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

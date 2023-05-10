@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react'
+import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
 
 export default function Search({ handleSearch }) {
@@ -8,11 +8,6 @@ export default function Search({ handleSearch }) {
         setQuery(event.target.value);
     }
 
-    // const handleSearch = (event) => {
-    //     event.preventDefault();
-    //     props.handleSearch(searchQuery)
-
-    // }
     const dispatch = useDispatch()
 
     handleSearch = (event) => {

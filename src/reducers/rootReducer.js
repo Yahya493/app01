@@ -29,7 +29,6 @@ const rootreducer = (state = initstate, action) => {
             break
         }
         case 'search': {
-            // console.log(action.searchQuery)
             state = { ...state, searchQuery: action.searchQuery }
             break
         }
