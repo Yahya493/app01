@@ -1,10 +1,9 @@
-import ApiHelper from "../components/ApiHelper";
 
 const initstate = {
     data: [],
     filters: {
-        categoriesName: [],
-        categories: []
+        categoriesName: [],  //categories to be shown on the sidePanel
+        categories: []       //selected categories
     },
     searchQuery: ''
 }
