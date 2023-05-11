@@ -1,18 +1,21 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 export default function Search({ handleSearch }) {
     const [searchQuery, setQuery] = useState('');
-
-    const handleInputChange = (event) => {
-        setQuery(event.target.value);
-    }
-
+    
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     handleSearch = (event) => {
         event.preventDefault()
+        navigate('/')
         dispatch({type: 'search', searchQuery: searchQuery})
+    }
+
+    const handleInputChange = (event) => {
+        setQuery(event.target.value);
     }
 
     return (

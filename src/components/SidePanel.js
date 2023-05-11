@@ -30,7 +30,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(class SidePanel exte
     })
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(preProps) {
 
     if (!this.state.isLoaded && this.props.categories.length !== 0 ) {
       let i = 0
