@@ -8,7 +8,7 @@ export default class ContentCol extends Component {
             <div className={'col s' + colSize}>
                 {this.props.data.map(val => {
                     return (
-                        <ProductCard key={val.id} data={val} />
+                        <ProductCard key={val._id} data={val} />
                     )
                 })}
             </div>

@@ -5,7 +5,7 @@ import Rating from './Rating'
 export default class ProductCard extends Component {
     state = {
         data: {
-            id: 0,
+            _id: '',
             title: '',
             price: 0,
             description: '',
@@ -36,7 +36,7 @@ export default class ProductCard extends Component {
                     <div style={{ position: "absolute", bottom: "10px", backgroundColor:'white'}}>
                         <h6>${this.state.data.price}</h6>
                         <Rating rating={this.state.data.rating} />
-                        <Link to={'product/' + this.state.data.id} className='waves-effect waves-light btn-small'>Read more</Link>
+                        <Link to={'product/' + this.state.data._id} className='waves-effect waves-light btn-small'>Read more</Link>
                     </div>
                 </div>
                 <div className="card-reveal" style={{ padding: "10px", }}>

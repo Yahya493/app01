@@ -6,7 +6,7 @@ import { useSelector} from 'react-redux'
 export default function ProductPage(props) {
 
   let { id } = useParams()
-  const product = useSelector((state) => state.data.find(value => value.id == id))
+  const product = useSelector((state) => state.data.find(value => value._id == id))
   
   return (
     <div className='container row'>

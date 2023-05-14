@@ -1,7 +1,8 @@
 
 
 export default class ApiHelper {
-    api = 'https://fakestoreapi.com'
+    // api = 'https://fakestoreapi.com'
+    api = 'http://localhost:4000/api'
 
     constructor() {
         if (!ApiHelper.instance) {
